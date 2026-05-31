@@ -1,0 +1,58 @@
+# ─── Secrets (NEVER commit) ────────────────────────────
+.env
+.env.local
+.env.*.local
+.env.production
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+
+# ─── Dependencies & build artifacts ────────────────────
+node_modules/
+.pnpm-store/
+build/
+dist/
+/public/build/
+/public/_dev
+/extensions/*/dist
+.next/
+.react-router/
+.cache/
+.vite/
+*.tsbuildinfo
+
+# ─── Local DB (legacy dev) ────────────────────────────
+*.sqlite
+*.sqlite-journal
+prisma/dev.db*
+database.sqlite
+
+# ─── Shopify CLI local state ──────────────────────────
+.shopify/
+.shopify.lock
+shopify.web.toml.bak
+
+# ─── Client-specific secrets that leak ────────────────
+cli/shops.json
+cli/shops.private.json
+cli/clients/*.env
+
+# ─── OS / editor junk ─────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# ─── Logs ──────────────────────────────────────────────
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# ─── Temp ──────────────────────────────────────────────
+tmp/
+.tmp/

@@ -1,0 +1,61 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "REPLACE_WITH_YOUR_SHOPIFY_CLIENT_ID"
+name = "Agentic SEO"
+application_url = "https://your-app.example.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-07"
+
+  [webhooks.privacy_compliance]
+  customer_data_request_url = "https://your-app.example.com/webhooks/customers/data_request"
+  customer_deletion_url = "https://your-app.example.com/webhooks/customers/redact"
+  shop_deletion_url = "https://your-app.example.com/webhooks/shop/redact"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,write_content,write_files,write_themes,write_translations,write_inventory,read_locales,read_product_listings,write_online_store_navigation"
+
+[auth]
+redirect_urls = [
+  "https://your-app.example.com/auth/callback",
+  "https://your-app.example.com/auth/shopify/callback",
+  "https://your-app.example.com/api/auth/callback",
+  "https://your-app.example.com/api/auth"
+]
+
+[product.metafields.app.demo_info]
+type = "single_line_text_field"
+name = "Demo Source Info"
+description = "Tracks products created by the Shopify app template for development"
+
+  [product.metafields.app.demo_info.access]
+  admin = "merchant_read_write"
+
+[metaobjects.app.example]
+name = "Example"
+description = "An example metaobject definition created by this template"
+
+  [metaobjects.app.example.access]
+  admin = "merchant_read_write"
+
+[metaobjects.app.example.fields.title]
+name = "Title"
+type = "single_line_text_field"
+required = true
+
+[metaobjects.app.example.fields.description]
+name = "Description"
+type = "multi_line_text_field"
